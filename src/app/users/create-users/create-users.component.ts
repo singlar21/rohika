@@ -5,14 +5,14 @@ import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } 
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { CommonModule } from '@angular/common';
 import { UsersService } from './users.service';
-import {states} from '../../dropdownLists/states.to'
+import { states } from '../../dropdownLists/states.to'
 import { NotificationService } from '../../core/notification/notification.service';
 
 
 @Component({
   selector: 'app-create-users',
   standalone: true,
-  imports: [ReactiveFormsModule,CommonModule],
+  imports: [ReactiveFormsModule, CommonModule],
   templateUrl: './create-users.component.html',
   styleUrl: './create-users.component.less'
 })
@@ -23,11 +23,13 @@ export class CreateUsersComponent {
   stateList = states;
   countryList = ["India"];
 
-  constructor(private fb: FormBuilder,private userService:UsersService,private notificationService: NotificationService) {
-    
+  lastUser: string;
+
+  constructor(private fb: FormBuilder, private userService: UsersService, private notificationService: NotificationService) {
+    this.lastUser = '';
 
     this.detailsForm = this.fb.group({
-      aliasName: ['', Validators.required],
+      aliasName: ['JBR', Validators.required],
       name: ['', Validators.required],
       address: ['', Validators.required],
       city: ['', Validators.required],
@@ -67,7 +69,9 @@ export class CreateUsersComponent {
       this.userService.createUser(formattedData).subscribe({
         next: (response) => {
           console.log('', response);
+          this.lastUser = formattedData.businessData.aliasName;
           this.notificationService.showSuccess('User created successfully');
+          this.reset();
           // Handle success, such as showing a success message
         },
         error: (error) => {
@@ -80,9 +84,21 @@ export class CreateUsersComponent {
   }
 
   reset() {
-    this.detailsForm.reset();
+    this.detailsForm.reset({
+      aliasName: 'JBR',
+      name: '',
+      address: '',
+      city: '',
+      state: '',
+      pincode: '',
+      country: '',
+      code: '',
+      phone: '',
+      email: '',
+      countryCode: '91'
+    });
     this.notificationService.showWarning('Form reset!');
   }
-  
-  
+
+
 }
