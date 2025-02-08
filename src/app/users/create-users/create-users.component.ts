@@ -1,18 +1,19 @@
 import { Component } from '@angular/core';
 import { Firestore, collection, addDoc } from '@angular/fire/firestore';
 import { UserDetail } from './users.to';
-import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { CommonModule } from '@angular/common';
 import { UsersService } from './users.service';
 import { states } from '../../dropdownLists/states.to'
 import { NotificationService } from '../../core/notification/notification.service';
+import { sources } from '../../dropdownLists/source.types.to';
 
 
 @Component({
   selector: 'app-create-users',
   standalone: true,
-  imports: [ReactiveFormsModule, CommonModule],
+  imports: [ReactiveFormsModule, CommonModule,FormsModule],
   templateUrl: './create-users.component.html',
   styleUrl: './create-users.component.less'
 })
@@ -22,6 +23,8 @@ export class CreateUsersComponent {
   formSubmitted = false;
   stateList = states;
   countryList = ["India"];
+  sourceList = sources;
+  source:string | undefined;
 
   lastUser: string;
 
@@ -98,6 +101,14 @@ export class CreateUsersComponent {
       countryCode: '91'
     });
     this.notificationService.showWarning('Form reset!');
+  }
+
+  changeSourceValue(_$event:any) {
+    let shortName = 'JBR';
+    if(this.source == 'Instagram') {
+      shortName = 'INSTA';
+    }
+    this.detailsForm.get('aliasName')?.setValue(shortName);
   }
 
 

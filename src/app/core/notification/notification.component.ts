@@ -17,7 +17,7 @@ export class NotificationComponent implements OnInit {
   ngOnInit() {
     this.notificationService.notifications$.subscribe((notification) => {
       this.notifications.push(notification);
-      // setTimeout(() => this.dismissNotification(notification), 5000);
+      setTimeout(() => this.dismissNotification(notification), 5000);
     });
   }
 

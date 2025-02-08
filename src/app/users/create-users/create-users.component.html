@@ -1,6 +1,20 @@
 <div class="container mt-5">
-  <h2 class="mb-4">User Details</h2>
-  <h3>Last User Created {{lastUser}}</h3>
+  <label style="color: red;">Last User Created {{lastUser}}</label>
+  <hr>
+
+  <h3 class="mb-4">User Details</h3>
+
+  <div class="row mb-3">
+    <div class="col-md-6">
+      <label for="source" class="form-label">Source</label>
+      <select id="source" class="form-control" [(ngModel)]="source" (change)="changeSourceValue($event)">
+        <option [value]="source" *ngFor="let source of sourceList">{{source}}</option>
+      </select>
+
+    </div>
+  </div>
+
+
   <form [formGroup]="detailsForm" (ngSubmit)="onSubmit()">
     <div class="row mb-3">
       <div class="col-md-6">
