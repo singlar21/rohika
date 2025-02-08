@@ -1,0 +1,22 @@
+<div class="container mt-4">
+    <h2 class="text-center">JSON Beautifier</h2>
+
+    <div class="row mt-3">
+        <!-- Input JSON -->
+        <div class="col-md-6">
+            <h5>Enter JSON:</h5>
+            <textarea [(ngModel)]="jsonInput" rows="15" class="form-control" placeholder="Paste JSON here..."></textarea>
+        </div>
+
+        <!-- Beautified JSON -->
+        <div class="col-md-6">
+            <h5>Formatted JSON:</h5>
+            <pre class="p-3 bg-light border rounded">{{ formattedJson }}</pre>
+        </div>
+    </div>
+
+    <div class="text-center mt-3">
+        <button class="btn btn-primary me-2" (click)="beautifyJson()">Beautify</button>
+        <button class="btn btn-secondary" (click)="copyToClipboard()">Copy</button>
+    </div>
+</div>

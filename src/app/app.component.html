@@ -1,2 +1,11 @@
 <app-notification></app-notification>
-<app-create-users></app-create-users>
+<div class="container text-center mt-5">
+    <h2>Navigate to Pages</h2>
+    <div class="mt-3">
+        <a [routerLink]="['/createUser']" class="btn btn-primary me-3">Create Users</a>
+        <a [routerLink]="['/createOrder']" class="btn btn-success  me-3">Create Order</a>
+        <a [routerLink]="['/json']" class="btn btn-success">JSON Formatter</a>
+    </div>
+</div>
+
+<router-outlet></router-outlet>

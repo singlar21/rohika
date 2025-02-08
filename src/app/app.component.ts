@@ -1,12 +1,11 @@
 import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
-import { CreateUsersComponent } from './users/create-users/create-users.component';
+import { RouterLink, RouterOutlet } from '@angular/router';
 import { NotificationComponent } from './core/notification/notification.component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet,CreateUsersComponent,NotificationComponent],
+  imports: [RouterOutlet,RouterLink,NotificationComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.less'
 })
