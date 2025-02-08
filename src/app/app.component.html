@@ -1,11 +1,14 @@
 <app-notification></app-notification>
-<div class="container text-center mt-5">
+<!-- <div class="container text-center mt-2">
     <h2>Navigate to Pages</h2>
     <div class="mt-3">
         <a [routerLink]="['/createUser']" class="btn btn-primary me-3">Create Users</a>
-        <a [routerLink]="['/createOrder']" class="btn btn-success  me-3">Create Order</a>
-        <a [routerLink]="['/json']" class="btn btn-success">JSON Formatter</a>
+        <a [routerLink]="['/createOrder']" class="btn btn-success me-3">Create Order</a>
+        <a [routerLink]="['/json']" class="btn btn-info">JSON Formatter</a>
     </div>
 </div>
 
-<router-outlet></router-outlet>
+<div class="container mt-4">
+    <router-outlet></router-outlet>
+</div> -->
+<app-json-formatter></app-json-formatter>
