@@ -1,28 +1,40 @@
 <div class="container mt-4">
-    <h2 class="text-center">JSON Beautifier & Comparer</h2>
+    <h4 class="text-center">JSON Comparer</h4>
 
     <div class="row mt-3">
         <!-- Left JSON Input -->
-        <div class="col-md-6">
-            <h5>JSON Input 1:</h5>
-            <textarea [(ngModel)]="jsonInput1" rows="10" class="form-control"></textarea>
+        <div class="col-md-5">
+            <h6>JSON Input 1:</h6>
+            <textarea [(ngModel)]="jsonInput1" rows="20" class="form-control"></textarea>
+            <br>
+            <h6>Output 1:
+                <button class="btn btn-secondary my-2" (click)="copyToClipboardOutput1()">Copy</button>
+            </h6>
+            <div class="json-container form-control mt-2" [innerHTML]="highlightedJson1"></div>
+        </div>
+
+        <!-- Buttons in Center -->
+        <div class="col-md-2 d-flex flex-column" style="margin-top:100px">
+            <button class="btn btn-success my-2" (click)="addSample()">Sample Input</button>
+            <button class="btn btn-primary my-2" (click)="beautifyJson()">Beautify</button>
+            <button class="btn btn-success my-2" (click)="compareJson()">Compare</button>
         </div>
 
         <!-- Right JSON Input -->
-        <div class="col-md-6">
-            <h5>JSON Input 2:</h5>
-            <textarea [(ngModel)]="jsonInput2" rows="10" class="form-control"></textarea>
+        <div class="col-md-5">
+            <h6>JSON Input 2:</h6>
+            <textarea [(ngModel)]="jsonInput2" rows="20" class="form-control"></textarea>
+            <br>
+            <h6>Output 2:
+                <button class="btn btn-secondary my-2" (click)="copyToClipboardOutput2()">Copy</button>
+            </h6>
+
+            <div class="json-container form-control mt-2" [innerHTML]="highlightedJson2"></div>
         </div>
     </div>
 
-    <div class="text-center mt-3">
-        <button class="btn btn-primary me-2" (click)="beautifyJson()">Beautify</button>
-        <button class="btn btn-success me-2" (click)="compareJson()">Compare</button>
-        <button class="btn btn-secondary" (click)="copyToClipboard()">Copy Comparison</button>
-    </div>
-
     <div class="mt-4">
-        <h5>Comparison Result:</h5>
+        <h6>Comparison Result:</h6>
         <pre class="p-3 bg-light border rounded">{{ comparisonResult }}</pre>
     </div>
 </div>
