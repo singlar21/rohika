@@ -40,7 +40,7 @@ export class JsonFormatterComponent {
   }
 
   compareJson() {
-    // this.beautifyJson();
+    this.beautifyJson();
     try {
       const obj1 = JSON.parse(this.jsonInput1);
       const obj2 = JSON.parse(this.jsonInput2);
@@ -132,6 +132,14 @@ export class JsonFormatterComponent {
 
   copyToClipboardOutput2() {
     navigator.clipboard.writeText(this.jsonInput2).then(() => alert('Copied!'));
+  }
+
+  clearAll() {
+    this.jsonInput1 = '';
+    this.jsonInput2= '';
+    this.comparisonResult= '';
+    this.highlightedJson1= '';
+    this.highlightedJson2= '';
   }
 
 }
