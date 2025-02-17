@@ -1,5 +1,7 @@
 import { Database, ref, get, set, update } from '@angular/fire/database';
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs/internal/Observable';
+import { from } from 'rxjs/internal/observable/from';
 
 @Injectable({
   providedIn: 'root'
@@ -26,6 +28,16 @@ export class VisitService {
 
     const snapshot = await get(visitRef);
     return snapshot.exists() ? snapshot.val().count : 0;
+  }
+
+  getTotalVisitCount(): Observable<number> {
+    const visitRef = ref(this.db, `visits`);
+    return from(get(visitRef).then(snapshot => {
+      if (!snapshot.exists()) return 0; // No data yet
+
+      const data = snapshot.val();
+      return Object.values(data).reduce((sum: number, entry: any) => sum + (entry.count || 0), 0);
+    }));
   }
   
 }

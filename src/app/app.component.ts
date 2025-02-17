@@ -22,11 +22,9 @@ export class AppComponent  implements OnInit{
   }
 
   ngOnInit(): void {
-    this.visitService.getVisitCount().then(count => {
+    this.visitService.getTotalVisitCount().subscribe(count => {
       this.visitService.incrementVisit();
       this.visitCount = count; // Set visit count when data is fetched
-    }).catch(error => {
-      console.error("Error fetching visit count:", error);
     });
   }
   
