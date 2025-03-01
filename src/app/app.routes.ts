@@ -7,7 +7,7 @@ import { YangValidatorComponent } from './yang-validator/yang-validator.componen
 
 export const routes: Routes = [
 
-    { path: '', redirectTo: 'compare', pathMatch: 'full' },
+    { path: '', component: JsonFormatterComponent },
     { path: 'createUser', component: CreateUsersComponent },
     { path: 'compare', component: JsonFormatterComponent },
     { path: 'beautifier', component: JsonBeautifierComponent },
