@@ -1,14 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import { RouterLink, RouterOutlet } from '@angular/router';
-import { NotificationComponent } from './core/notification/notification.component';
-import { JsonFormatterComponent } from "./json-formatter/json-formatter.component";
-import { addDoc, collection } from '@angular/fire/firestore';
+import { RouterLink, RouterModule, RouterOutlet } from '@angular/router';
 import { VisitService } from './services/visit.service';
+import { NotificationComponent } from './core/notification/notification.component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, RouterLink, NotificationComponent, JsonFormatterComponent],
+  imports: [RouterOutlet, RouterLink, RouterModule,NotificationComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.less'
 })

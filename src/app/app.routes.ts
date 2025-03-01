@@ -5,7 +5,7 @@ import { JsonBeautifierComponent } from './json-beautifier/json-beautifier.compo
 
 export const routes: Routes = [
 
-    {path: '', redirectTo:'beautifier',pathMatch:'full'},
+    {path: '', redirectTo:'compare',pathMatch:'full'},
     {path: 'createUser', component: CreateUsersComponent},
     {path: 'compare', component: JsonFormatterComponent},
     {path: 'beautifier', component: JsonBeautifierComponent},

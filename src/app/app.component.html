@@ -1,14 +1,28 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-primary ">
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav mr-auto">
-            <li class="nav-item active">
-                <a class="nav-link" href="#">Home</a>
-            </li>
-            <a [routerLink]="['/beautifier']" class="btn btn-primary me-3">JSON Beautifier</a>
-            <a [routerLink]="['/compare']" class="btn btn-primary me-3">JSON Compare</a>
-        </ul>
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="#">JSON Bhai</a>
+
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav me-auto">
+                <li class="nav-item">
+                    <a class="nav-link" routerLink="/compare" routerLinkActive="active">
+                        JSON Compare
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" routerLink="/beautifier" routerLinkActive="active">
+                        JSON Beautifier
+                    </a>
+                </li>
+            </ul>
+
+            <span class="navbar-text text-white">Total Visitors: {{ visitCount }}</span>
+        </div>
     </div>
-    <div><a style="position: fixed;right: 10px;top: 10px;"> Total Visitors:{{visitCount}}</a></div>
 </nav>
 
 
