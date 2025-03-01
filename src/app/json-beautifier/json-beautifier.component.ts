@@ -60,5 +60,13 @@ export class JsonBeautifierComponent {
     }
   }
 
+  minifyJson() {
+    try {
+      const parsedJson = JSON.parse(this.jsonInput1); // Parse JSON to ensure it's valid
+      this.highlightedJson1 = JSON.stringify(parsedJson); // Minify JSON by removing spaces & line breaks
+    } catch (error) {
+      this.highlightedJson1 = "Invalid JSON"; // Handle errors gracefully
+    }
+  }  
 
 }
