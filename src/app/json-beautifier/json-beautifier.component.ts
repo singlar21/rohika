@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { SafeHtml, DomSanitizer } from '@angular/platform-browser';
+import { SafeHtml } from '@angular/platform-browser';
 import { sampleJsonInput1 } from '../json-formatter/sample-json';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
@@ -16,7 +16,7 @@ export class JsonBeautifierComponent {
   comparisonResult: string = '';
   highlightedJson1: SafeHtml = '';
 
-  constructor(private sanitizer: DomSanitizer) {}
+  constructor() {}
 
   addSample() {
     this.jsonInput1 = JSON.stringify(sampleJsonInput1, null, 4);
@@ -42,6 +42,22 @@ export class JsonBeautifierComponent {
 
   copyToClipboardOutput2() {
     navigator.clipboard.writeText(this.highlightedJson1+'').then(() => alert('Copied!'));
+  }
+
+  validate() {
+    const result = this._validateJson(this.jsonInput1);
+    this.highlightedJson1 = result.valid
+      ? 'Valid JSON ✅'
+      : `Invalid JSON ❌: ${result.error}`;
+  }
+  
+  private _validateJson(jsonString: string): { valid: boolean; error?: string } {
+    try {
+      JSON.parse(jsonString);
+      return { valid: true };
+    } catch (error) {
+      return { valid: false, error: (error as Error).message };
+    }
   }
 
 
